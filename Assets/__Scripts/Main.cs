@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Main : MonoBehaviour {
+public class Main : MonoBehaviour
+{
     static public Main S;
 
     [Header("Set in Inspector")]
@@ -40,5 +41,16 @@ public class Main : MonoBehaviour {
 
         Invoke("SpawnEnemy", 1f / enemySpawnPerSecond);
     }
+
+    public void DelayedRestart(float delay)
+    {
+        Invoke("Restart", delay);
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("SM_Scene_1");
+    }
+
 
 }
