@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
+    private SM_BoundsCheck bndCheck;
+
+
+    void Awake()
+    {
+        bndCheck = GetComponent<SM_BoundsCheck>();
+    }
+
 	void Update () {
-		
+		if (bndCheck.offUp)
+        {
+            Destroy(gameObject);
+        }
+
 	}
 }
