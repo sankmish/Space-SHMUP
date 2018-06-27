@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour {
     public float health = 10;
     public int score = 100;
 
-    private SM_BoundsCheck bndCheck;
+    protected SM_BoundsCheck bndCheck;
 
     void Awake()
     {
@@ -34,7 +34,10 @@ public class Enemy : MonoBehaviour {
 
         if (bndCheck != null && !bndCheck.isOnScreen)
         {
+            if (pos.y < bndCheck.camHeight - bndCheck.radius) { 
+                print("Destroyed");
             Destroy(gameObject);
+         }
         }
 	}
 
