@@ -32,7 +32,7 @@ public class SM_Hero : MonoBehaviour {
         {
             Debug.LogError("Hero.Awake() - Attempted to assign second Hero.S!");
         }
-        fireDelegate += TempFire;
+       // fireDelegate += TempFire;
     }
 
 	
@@ -60,19 +60,19 @@ public class SM_Hero : MonoBehaviour {
 
 	}
 
-    void TempFire()
-    {
-        GameObject projGO = Instantiate<GameObject>(projectilePrefab);
-        projGO.transform.position = transform.position;
-        Rigidbody rigidB = projGO.GetComponent<Rigidbody>();
-        //  rigidB.velocity = Vector3.up * projectileSpeed;
+    /* void TempFire()
+     {
+         GameObject projGO = Instantiate<GameObject>(projectilePrefab);
+         projGO.transform.position = transform.position;
+         Rigidbody rigidB = projGO.GetComponent<Rigidbody>();
+         //  rigidB.velocity = Vector3.up * projectileSpeed;
 
-        Projectile proj = projGO.GetComponent<Projectile>();
-        proj.type = WeaponType.blaster;
-        float tSpeed = Main.GetWeaponDefinition(proj.type).velocity;
-        rigidB.velocity = Vector3.up * speed;
+         Projectile proj = projGO.GetComponent<Projectile>();
+         proj.type = WeaponType.blaster;
+         float tSpeed = Main.GetWeaponDefinition(proj.type).velocity;
+         rigidB.velocity = Vector3.up * speed;
 
-    }
+   }   */
 
 
     void OnTriggerEnter(Collider other)

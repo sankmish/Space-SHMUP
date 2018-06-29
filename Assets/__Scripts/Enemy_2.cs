@@ -18,7 +18,7 @@ public class Enemy_2 : Enemy {
 	void Start () {
 
         p0 = Vector3.zero;
-        p0.x = -bndCheck.camWidth -bndCheck.radius;
+        p0.x = -bndCheck.camWidth - bndCheck.radius;
         p0.y = Random.Range(-bndCheck.camHeight, bndCheck.camHeight);
 
         p1 = Vector3.zero;
