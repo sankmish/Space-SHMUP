@@ -12,7 +12,7 @@ public class SM_Hero : MonoBehaviour {
     public float gameRestartDelay = 2f;
     public GameObject projectilePrefab;
     public float projectileSpeed = 40;
-
+	public Weapon[] weapons;
 
     [Header("Set Dynamically")]
     [SerializeField]
@@ -70,7 +70,15 @@ public class SM_Hero : MonoBehaviour {
          Projectile proj = projGO.GetComponent<Projectile>();
          proj.type = WeaponType.blaster;
          float tSpeed = Main.GetWeaponDefinition(proj.type).velocity;
-         rigidB.velocity = Vector3.up * speed;
+	public void AbsorbPowerUp (GameObject go) {
+		PowerUp pu = go.GetComponent<PowerUp> ();
+		switch (pu.type) {
+
+
+		}
+		pu.AbsorbedBy (this.gameObject);
+
+	}         rigidB.velocity = Vector3.up * speed;
 
    }   */
 
@@ -92,31 +100,44 @@ public class SM_Hero : MonoBehaviour {
             shieldLevel--;
             Destroy(go);
         }
+		else if (go.tag == "PowerUp") {
+			AbsorbPowerUp (go);
+		}
         else
         {
             print("Triggered by non-Enemy: " + go.name);
         }
     }
 
-        public float shieldLevel
-    {
-        get
-        {
-            return (_shieldLevel);
-        }
-        set
-        {
-            _shieldLevel = Mathf.Min(value, 4);
-            if (value < 0)
-            {
-                Destroy(this.gameObject);
-                Main.S.DelayedRestart(gameRestartDelay);
-            }
-        
+	public void AbsorbPowerUp (GameObject go) {
+		PowerUp pu = go.GetComponent<PowerUp> ();
+		switch (pu.type) {
 
 
-    }
+		}
+		pu.AbsorbedBy (this.gameObject);
 
-    }
+	}
 
+	public float shieldLevel
+	{
+		get
+		{
+			return (_shieldLevel);
+		}
+		set
+		{
+			_shieldLevel = Mathf.Min(value, 4);
+			if (value < 0)
+			{
+				Destroy(this.gameObject);
+				Main.S.DelayedRestart(gameRestartDelay);
+			}
+
+
+
+		}
+
+	}
+		
 }
