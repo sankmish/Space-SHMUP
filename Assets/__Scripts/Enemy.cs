@@ -56,7 +56,6 @@ public class Enemy : MonoBehaviour {
         if (bndCheck != null && !bndCheck.isOnScreen)
         {
             if (pos.y < -bndCheck.camHeight - bndCheck.radius) { 
-                print("Destroyed");
             Destroy(gameObject);
          }
         }
@@ -71,12 +70,10 @@ public class Enemy : MonoBehaviour {
 
     void OnCollisionEnter (Collision coll)
     {
-        print("OnCollision");
         GameObject otherGO = coll.gameObject;
         switch (otherGO.tag)
         {
 		case "ProjectileHero":
-			print ("Hit by projectie Hero");
 			Projectile p = otherGO.GetComponent<Projectile> ();
 			if (!bndCheck.isOnScreen) {
 				Destroy (otherGO);
